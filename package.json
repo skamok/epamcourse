@@ -1,0 +1,27 @@
+{
+  "name": "cowsay-homework",
+  "version": "0.0.1",
+  "description": "epam course lesson 2 homework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skamok/cowsay.git"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "Stanislav Korshankov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skamok/cowsay/issues"
+  },
+  "homepage": "https://github.com/skamok/cowsay#readme",
+  "dependencies": {
+    "cowsay": "^1.4.0",
+    "request": "^2.88.2"
+  }
+}
