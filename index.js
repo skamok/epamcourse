@@ -1,6 +1,3 @@
-const numMathString = document.getElementById('21');
-const numMathlusString = document.getElementById('21res');
-
 const symb = Symbol('MySymbol');
 const obj = {age: 5};
 
@@ -47,4 +44,3 @@ document.getElementById('324').innerHTML = Boolean(NaN == NaN);
 document.getElementById('33').innerHTML = Boolean({});
 document.getElementById('34').innerHTML = Boolean(null);
 document.getElementById('35').innerHTML = Boolean(undefined);
-

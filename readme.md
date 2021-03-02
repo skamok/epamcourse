@@ -1,6 +1,6 @@
 # Typecoercion
 
-Task Typecoercion
+Task Type Coercion
 1. Add file index.html containig script with type coercion operations
 2. Provide link to this repo to your Mentor
 
