@@ -1,0 +1,17 @@
+html {
+  box-sizing: border-box;
+  font-size: 30px;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+.wrapper {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.header__caption {
+  color: rgb(30, 255, 0);
+}
