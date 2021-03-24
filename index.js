@@ -1,31 +1,31 @@
-function pleaseRunThis() {
-  trap()
-}
-function trap() {
-  pleaseRunThis()
-}
-// pleaseRunThis() // https://medium.com/@diep.christopher/javascript-call-stack-and-stack-overflow-7da2903fcb5c
-// https://auth0.com/blog/four-types-of-leaks-in-your-javascript-code-and-how-to-get-rid-of-them/
+const BtnMemoryLeak = document.getElementById('leak');
+const BtnStackOverflow = document.getElementById('overflow');
+const elementNodes = document.getElementById('nodes');
 
-var x = [];
+const memoryArray = [];
+const stringLength = 50000;
 
-function createSomeNodes() {
-    var div,
-        i = 100,
-        frag = document.createDocumentFragment();
-    for (;i > 0; i--) {
-        div = document.createElement("div");
-        div.appendChild(document.createTextNode(i + " - "+ new Date().toTimeString()));
-        frag.appendChild(div);
-    }
-    document.getElementById("nodes").appendChild(frag);
-}
-function grow() {
-    x.push(new Array(1000000).join('x'));
-    createSomeNodes();
-    setTimeout(grow,1000);
+BtnStackOverflow.addEventListener('click', loop1);
+BtnMemoryLeak.addEventListener('click', leakMemory);
+
+function loop1() {
+  loop2();
 }
 
-document.getElementById('button').addEventListener('click', () => {
-  grow();
-})
+function loop2() {
+  loop1();
+}
+
+function leakMemory() {
+  memoryArray.push(new Array(stringLength).join('x'));
+  generateNodes();
+}
+
+function generateNodes() {
+  for (let i = 0; i < 1000; i++) {
+    const element = document.createElement('div');
+    const dateTime = new Date();
+    if (i === 999) element.innerText = `${dateTime.getHours()}:${dateTime.getMinutes()}:${dateTime.getSeconds()} Memory Array size = ${memoryArray.length * stringLength}`;
+    elementNodes.appendChild(element);
+  }
+}
