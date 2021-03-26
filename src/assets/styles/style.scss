@@ -9,6 +9,7 @@ html {
 
 $regularTextColor: #60606E;
 $bgColor: #7BEEC7;
+$btnTextColor: #FFFFFF;
 $containerWidth: 1300px;
 $contentWidth: 1140px;
 $regularFont: 'Montserrat';
@@ -16,23 +17,31 @@ $regularFont: 'Montserrat';
 .wrapper {
   max-width: $containerWidth;
   margin: 0 auto;
+
+  &__choose {
+    margin-top: 261px;
+  }
 }
 
 .about {
   height: 850px;
   background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('../images/aboutbackground.png');
-  background-size: contain;
+  background-size: 1300px auto;
   background-repeat: no-repeat;
   &__header {
     padding-top: 43px;
     margin: 0 80px;
   }
   &__logo {
-    margin-top: 167px;
+    margin-top: 164px;
   }
   &__history {
-    padding-top: 123px;
-    margin: 0 auto;
+    padding-top: 119px;
+    margin-left: 80px;
+    margin-right: 80px;
+  }
+  &__choose {
+
   }
 }
 
@@ -81,7 +90,6 @@ $regularFont: 'Montserrat';
 }
 
 .logo {
-  max-width: $contentWidth;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -89,8 +97,8 @@ $regularFont: 'Montserrat';
   &__uptitle {
     background-color: $bgColor;
     color: $regularTextColor;
-    width: 100px;
-    line-height: 31px;
+    width: 98px;
+    line-height: 30px;
     font: {
       family: $regularFont;
       size: 18px;
@@ -101,7 +109,8 @@ $regularFont: 'Montserrat';
     border: 10px solid $regularTextColor;
     color: $regularTextColor;
     width: 556px;
-    line-height: 101px;
+    line-height: 80px;
+    letter-spacing: -0.5px;
     font: {
       family: $regularFont;
       size: 48px;
@@ -110,9 +119,10 @@ $regularFont: 'Montserrat';
   }
   &__subtitle {
     color: $regularTextColor;
-    max-width: 537px;
-    line-height: 20px;
-    margin-top: 30px;
+    max-width: 547px;
+    line-height: 25px;
+    margin-top: 24px;
+    letter-spacing: -0.5px;
     font: {
       family: $regularFont;
       size: 16px;
@@ -125,31 +135,75 @@ $regularFont: 'Montserrat';
   display: flex;
   justify-content: space-between;
   max-width: $contentWidth;
+
   &__image {
-    width: 459px;
-    height: 402px;
+    max-width: 100%;
+    height: auto;
     display: block;
   }
-  &__info {
-    margin-top: 31px;
+
+  &__data {
+    display: flex;
+    flex-direction: column;
+    margin-top: 44px;
+    margin-left: 30px;
     max-width: 557px;
+  }
+
+  &__info {
+    margin-right: 15px;
+  }
+
+  &__btn {
+    width: 166px;
+    height: 51px;
+    background-color: $bgColor;
+    border: none;
+    margin-top: 16px;
+    align-self: flex-end;
+    color: $btnTextColor;
+    font: {
+      family: $regularFont;
+      size: 14px;
+      weight: bold;
+    }
   }
 }
 
-.info__title:before{
-  content: '';
+.btn {
   background-color: $bgColor;
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  top: 0;
-  left: 0;
+  border: none;
+  color: $btnTextColor;
+  text-transform: uppercase;
+  font: {
+    family: $regularFont;
+    size: 14px;
+    weight: bold;
+  }
 }
 
 .info {
   color: $regularTextColor;
-  &__title {
+
+  &__title {    
+    margin-bottom: 9px;
+    width: 275px;
+  }
+
+  &__marker {
     position: relative;
+    height: 22px;
+    width: 68px;
+    background-color: $bgColor; 
+  }
+
+  &__text {
+    width: 380px;
+    position: absolute;
+    top: -15px;
+    left: 0px;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
     font: {
       family: $regularFont;
       size: 30px;
@@ -158,9 +212,8 @@ $regularFont: 'Montserrat';
   }
 
   &__subtitle {
-    line-height: 27px;
-    margin-top: 28px;
-    max-width: 541px;
+    line-height: 30px;
+    letter-spacing: -0.5px;
     font: {
       family: $regularFont;
       size: 16px;
@@ -174,5 +227,46 @@ $regularFont: 'Montserrat';
 
   &__subtitle_ta-center {
     text-align: center;
+    max-width: 720px;
+    line-height: 27px;
+    letter-spacing: -0.5px;
+    font-size: 14px;
+  }
+}
+
+.choose {
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__body {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 80px;
+    margin-right: 80px;
+  }
+
+  &__data {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.block {
+  color: $regularTextColor;
+  text-transform: uppercase;
+  &__image {
+
+  }
+
+  &__image-w32 {
+    width: 32px;
+  }
+
+  &__image-w28 {
+    width: 28px;
   }
 }
