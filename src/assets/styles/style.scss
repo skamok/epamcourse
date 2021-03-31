@@ -26,6 +26,10 @@ $openSansFont: 'Open Sans';
   &__portfolio {
     margin-top: 143px;
   }
+
+  &__subscribe {
+    margin-top: 100px;
+  }
 }
 
 .about {
@@ -383,5 +387,36 @@ $openSansFont: 'Open Sans';
 
   &__img {
     margin-bottom: 25px;
+  }
+}
+
+.subscribe {
+  background-color: #7BEEC7;
+
+  &__body {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    margin-left: 80px;
+    margin-right: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__form {
+    max-width: 557px;
+    background-color: $btnTextColor;
+  }
+
+}
+
+.form {
+  &__title {
+    margin-top: 20px;
+  }
+
+  &__input {
+    margin-bottom: 20px;
+    height: 51px;
   }
 }
