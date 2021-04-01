@@ -28,7 +28,7 @@ $openSansFont: 'Open Sans';
   }
 
   &__subscribe {
-    margin-top: 100px;
+    margin-top: 120px;
   }
 }
 
@@ -131,12 +131,35 @@ $openSansFont: 'Open Sans';
     max-width: 547px;
     line-height: 25px;
     margin-top: 24px;
-    letter-spacing: -0.5px;
     font: {
       family: $openSansFont;
       size: 16px;
       weight: normal;
     }
+  }
+}
+
+.btn {
+  width: 165px;
+  height: 51px;
+  background-color: $bgColor;
+  color: $btnTextColor;
+  border: none;
+  text-transform: uppercase;
+  margin: 0;
+  font: {
+    family: $regularFont;
+    size: 14px;
+    weight: bold;
+  }
+
+  &_white {
+    background-color: $btnTextColor;
+    color: $bgColor;
+  }
+
+  &_w182 {
+    width: 182px;
   }
 }
 
@@ -166,20 +189,6 @@ $openSansFont: 'Open Sans';
   &__btn {
     margin-top: 17px;
     align-self: flex-end;
-  }
-}
-
-.btn {
-  width: 165px;
-  height: 51px;
-  background-color: $bgColor;
-  color: $btnTextColor;
-  border: none;
-  text-transform: uppercase;
-  font: {
-    family: $regularFont;
-    size: 14px;
-    weight: bold;
   }
 }
 
@@ -222,7 +231,6 @@ $openSansFont: 'Open Sans';
   &__subtitle {
     padding-top: 16px;
     line-height: 30px;
-    letter-spacing: -0.5px;
     font: {
       family: $openSansFont;
       size: 16px;
@@ -237,8 +245,7 @@ $openSansFont: 'Open Sans';
   &__subtitle_ta-center {
     margin: 0 auto;
     text-align: center;
-    line-height: 27px;
-    letter-spacing: -0.5px;
+    line-height: 25px;
     font-size: 14px;
   }
 
@@ -256,16 +263,12 @@ $openSansFont: 'Open Sans';
 }
 
 .choose {
-  &__info {
-
-  }
-
   &__body {
     display: flex;
     justify-content: space-between;
     margin-left: 80px;
     margin-right: 80px;
-    margin-top: 93px;
+    margin-top: 97px;
   }
 
   &__data {
@@ -275,7 +278,6 @@ $openSansFont: 'Open Sans';
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     width: 100%;
-    //grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-row-gap: 12px
   }
 }
@@ -297,9 +299,8 @@ $openSansFont: 'Open Sans';
 
   &__title {
     margin-top: 13px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     line-height: 14px;
-    letter-spacing: -0.1px;
     font: {
       family: $regularFont;
       size: 18px;
@@ -309,7 +310,6 @@ $openSansFont: 'Open Sans';
 
   &__list {
     line-height: 30px;
-    letter-spacing: -1px;
     font: {
       family: $openSansFont;
       size: 14px;
@@ -320,7 +320,7 @@ $openSansFont: 'Open Sans';
 
 .portfolio {
   &__body {
-    margin-top: 108px;
+    margin-top: 85px;
     margin-left: 80px;
     margin-right: 80px;
     display: flex;
@@ -390,12 +390,72 @@ $openSansFont: 'Open Sans';
   }
 }
 
+.form {
+  background-color: $btnTextColor;
+  &__title {
+    margin-top: 11px;
+    margin-left: 28px;
+    color: $regularTextColor;
+    max-width: 370px;
+    line-height: 37px;
+    letter-spacing: -0.5px;
+    font: {
+      family: $regularFont;
+      weight: bold;
+      size: 24px;
+    }
+  }
+
+  &__subtitle {
+    margin-top: 2px;
+    margin-left: 28px;
+    color: $regularTextColor;
+    max-width: 472px;
+    line-height: 24px;
+    font: {
+      family: $openSansFont;
+      weight: normal;
+      size: 16px;
+    }
+  }
+
+  &__input-group {
+    margin-top: 27px;
+    margin-bottom: 17px;
+    margin-left: 22px;
+    margin-right: 26px;
+    width: 511px;
+    display: flex;
+  }
+
+  &__input {
+    width: 100%;
+    height: 51px;
+    padding: 0;
+    border-width: 1px;
+    border-color: $regularTextColor;
+    border-color: rgba(0, 0, 0, 0.2);;
+    border-style: solid;
+    text-indent: 15px;
+    text-transform: uppercase;
+    font: {
+      family: $openSansFont;
+      weight: bold;
+      size: 12px;
+    }
+  }
+
+  &__btn {
+    padding: 0;
+  }
+}
+
 .subscribe {
   background-color: #7BEEC7;
 
   &__body {
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: 38px;
+    padding-bottom: 50px;
     margin-left: 80px;
     margin-right: 80px;
     display: flex;
@@ -403,20 +463,81 @@ $openSansFont: 'Open Sans';
     justify-content: space-between;
   }
 
-  &__form {
-    max-width: 557px;
-    background-color: $btnTextColor;
+  &__title {
+    text-transform: uppercase;
+    color: $btnTextColor;
+    line-height: 48px;
+    letter-spacing: -0.5px;
+    max-width: 494px;
+    font: {
+      family: $regularFont;
+      weight: bold;
+      size: 30px;
+    }
   }
 
+  &__btn {
+    margin-top: 15px;
+  }
+
+  &__form {
+    margin-top: 12px;
+    max-width: 557px;
+  }
 }
 
-.form {
-  &__title {
-    margin-top: 20px;
+.footer {
+
+  &__body {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 80px;
   }
 
-  &__input {
-    margin-bottom: 20px;
-    height: 51px;
+  &__nav {
+    flex-basis: 50%;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__item {
+    line-height: 11px;
+    font: {
+      family: $openSansFont;
+      weight: bold;
+      size: 14px;
+    }
+  }
+
+  &__link {
+    color: $regularTextColor;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  &__info {
+    flex-basis: 50%;
+  }
+
+  &__lic {
+    color: $regularTextColor;
+    text-align: right;
+    font: {
+      family: $openSansFont;
+      weight: normal;
+      size: 14px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__icon {
+    height: 16px;
   }
 }
