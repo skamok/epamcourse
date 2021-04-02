@@ -1,5 +1,6 @@
 import '../styles/reset.css';
 import '../styles/fonts.css';
+import '../styles/iconsfont.css';
 import '../styles/style.scss';
 
 const importImages = {};
