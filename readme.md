@@ -5,3 +5,4 @@ Deploys
 3. Sum of Row https://skamok.github.io/epamcourse/sumofrow/index.html
 4. Memory Managment https://skamok.github.io/epamcourse/memory/index.html
 5. User Stuff https://skamok.github.io/epamcourse/userstuff/index.html
+6. Creative Agency https://skamok.github.io/epamcourse/agency/index.html
