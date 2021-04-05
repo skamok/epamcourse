@@ -65,7 +65,7 @@ $lineHeight320: 16px;
     }
   }
   &__logo {
-    margin-top: 164px;
+    margin-top: 152px;
     @media (max-width: 767px) {
       margin-top: 10px;
     }
@@ -110,34 +110,85 @@ $lineHeight320: 16px;
   }
 }
 
-.burger {
-  display: block;
+.hamburger {
   position: relative;
-  width: 30px;
-  height: 15px;
-  &:before, &:after{
-    content: '';
-    background-color: $regularTextColor;
-    position: absolute;
-    height: 1px;
-    width: 31px;
-    left: 0;
+  &__toggle {
+    opacity: 0;
+
+    &:checked ~ .hamburger__box {
+      visibility: visible;
+      top: 30px;
+    }
+    &:checked ~ .hamburger__btn > span {
+      transform: rotate(45deg);
+      }
+    &:checked ~ .hamburger__btn > span::before {
+      top: 0;
+      transform: rotate(0);
+    }
+    &:checked ~ .hamburger__btn > span::after {
+      top: 0;
+      transform: rotate(90deg);
+      width: 30px;
+    }
   }
-  &:before{
-    top: 0;
-  }
-  &:after{
-    bottom: 0;
-    width: 23px;
-  }   
-  &__span{
+
+  &__btn {
+    width: 30px;
+    height: 15px;
     position: absolute;
-    background-color: $regularTextColor;
+    right: 0px;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  &__span {
     width: 15px;
     height: 1px;
-    left: 0px;
-    top: 7px;           
-  }  
+    background-color: $regularTextColor;
+    position: absolute;
+    top: 7px;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 1px;
+      background-color: $regularTextColor;
+      top: -7px;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      width: 23px;
+      height: 1px;
+      background-color: $regularTextColor;
+      top: 7px;
+    }
+  }
+
+  &__box {
+    visibility: hidden;
+    position: absolute;
+    top: -200px;
+    background-color: transparent;
+    right: 0px;
+    transition: all 0.5s;
+    width: 100px;
+  }
+
+  &__item {
+    text-decoration: none;
+    color: $regularTextColor;
+    text-transform: uppercase;
+    font: {
+      family: $regularFont;
+      size: 18px;
+      weight: bold;
+    }
+    &:hover {
+      background-color: $bgColor;
+    }
+  }
 }
 
 .logo {
@@ -214,6 +265,7 @@ $lineHeight320: 16px;
   text-transform: uppercase;
   margin: 0;
   outline: none;
+  transition: all 0.5s;
   font: {
     family: $regularFont;
     size: 14px;
@@ -293,7 +345,7 @@ $lineHeight320: 16px;
     margin-top: 17px;
     align-self: flex-end;
     @media (max-width: 767px) {
-      margin-top: 18px;
+      margin-top: 5px;
       align-self: center;
     }
   }
@@ -994,9 +1046,10 @@ $lineHeight320: 16px;
   }
 
   &__icon {
-    margin-left: 20px;
+    margin-left: 18px;
     color: $regularTextColor;
     font-size: 16px;
+    transition: all 0.5s;
     &:hover {
       transform: scale(3);
     }
