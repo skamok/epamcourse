@@ -6,3 +6,4 @@ Deploys
 4. Memory Managment https://skamok.github.io/epamcourse/memory/index.html
 5. User Stuff https://skamok.github.io/epamcourse/userstuff/index.html
 6. Creative Agency https://skamok.github.io/epamcourse/agency/index.html
+7. React Task https://skamok.github.io/epamcourse/reacttask/index.html
