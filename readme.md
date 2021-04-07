@@ -7,3 +7,4 @@ Deploys
 5. User Stuff https://skamok.github.io/epamcourse/userstuff/index.html
 6. Creative Agency https://skamok.github.io/epamcourse/agency/index.html
 7. React Task https://skamok.github.io/epamcourse/reacttask/index.html
+8. Deploy React Task https://skamok.github.io/epamcourse/tolstoy/index.html
