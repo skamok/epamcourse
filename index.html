@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+    crossorigin="anonymous"
+  />
+  <script src="./index.js" defer></script>
+  <title>Leo Tolstoy</title>
+</head>
+<body class="container w-50">
+  <header>
+    <h1>Leo Tolstoy</h1>
+  </header>
+  <main>
+    <div class="form-floating mb-3">
+      <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 160px"></textarea>
+      <label for="floatingTextarea2">Input array of numbers, devided by comma.</label>
+      <button type="submit" class="btn btn-primary mb-3 mt-3" id="btn">Rate</button>
+    </div>
+    <div class="card text-dark bg-light mb-3 w-50">
+      <div class="card-header">Result</div>
+      <div class="card-body">
+        <h5 class="card-title" id="result"></h5>
+        <p class="card-text" id="source"></p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
