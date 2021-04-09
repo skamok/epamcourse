@@ -3,6 +3,8 @@ import '../styles/fonts.css';
 import '../styles/iconsfont.css';
 import '../styles/style.scss';
 
+import App from './App.js';
+
 const importImages = {};
 
 function importContext(data, distObj) {
@@ -12,3 +14,12 @@ function importContext(data, distObj) {
 }
 
 importContext(require.context('../images', true, /.(png|svg|jpg|jpeg|gif)$/), importImages);
+
+const mainElement = document.getElementById('main');
+const scoreElements = {
+  zero: document.getElementById('scoreZero'),
+  cross: document.getElementById('scoreCross')
+};
+
+const app = new App(mainElement, scoreElements);
+app.init();
