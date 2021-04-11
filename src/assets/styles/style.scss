@@ -82,6 +82,14 @@ body {
 
   &__icon {
     font-size: 64px;
+
+    &_zero {
+      color: $colorZero;
+    }
+
+    &_cross {
+      color: $colorCross;
+    }
   }
 }
 

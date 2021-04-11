@@ -19,4 +19,14 @@ export default class Score {
         this.playerCross.elementDiv
       ]);
   }
+
+  makeActive(player) {
+    if (player === 'zero') {
+      this.playerZero.startRotate();
+      this.playerCross.stopRotate();
+    } else {
+      this.playerZero.stopRotate();
+      this.playerCross.startRotate();
+    }
+  }
 }
