@@ -27,6 +27,14 @@ export default class Cell {
     }
   }
 
+  startRotate() {
+    this.elementIcon.classList.add('fa-spin', 'game__icon_win');
+  }
+
+  stopRotate() {
+    this.elementIcon.classList.remove('fa-spin', 'game__icon_win');
+  }
+
   static calcCoordinates(number) {
     const row = Math.trunc(number / 3);
     const column = row === 0 ? number : number % (row * 3);
@@ -34,5 +42,10 @@ export default class Cell {
       x: row,
       y: column
     };
+  }
+
+  reset() {
+    this.type = null;
+    this.elementIcon.className = 'game__icon fas';
   }
 }

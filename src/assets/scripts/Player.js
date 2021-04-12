@@ -31,4 +31,8 @@ export default class Player {
   stopRotate() {
     this.elementSymbol.classList.remove('fa-spin');
   }
+
+  incrementPoint(point) {
+    this.elementPoints.textContent = parseInt(this.elementPoints.textContent, 10) + point;
+  }
 }
