@@ -23,26 +23,17 @@ $lineHeight320: 16px;
   margin: 0 auto;
 
   &__choose {
-    margin-top: 247px;
+    padding-top: 247px;
     @media (max-width: 767px) {
-      margin-top: 50px;
+      padding-top: 50px;
     }
   }
 
   &__portfolio {
-    margin-top: 143px;
+    padding-top: 143px;
+    margin-bottom: 120px;
     @media (max-width: 767px) {
-      margin-top: 50px;
-    }
-  }
-
-  &__subscribe {
-    margin-top: 120px;
-    @media (max-width: 1199px) {
-      margin-top: 70px;
-    }
-    @media (max-width: 767px) {
-      margin-top: 50px;
+      padding-top: 50px;
     }
   }
 
@@ -64,10 +55,10 @@ $lineHeight320: 16px;
       margin: 0 5px;
     }
   }
-  &__logo {
-    margin-top: 152px;
+  &__title {
+    padding-top: 152px;
     @media (max-width: 767px) {
-      margin-top: 10px;
+      padding-top: 10px;
     }
   }
   &__history {
@@ -96,12 +87,16 @@ $lineHeight320: 16px;
   justify-content: space-between;
   max-width: $contentWidth;
   &__caption {
+    text-decoration: none;
     font: {
       family: 'Montserrat';
       weight: bold;
       size: 18px;
     };    
     color: $regularTextColor;
+    &:hover {
+      color: $bgColor;
+    }
     @media (max-width: 767px) {
       font: {
         size: 9px;
@@ -191,13 +186,13 @@ $lineHeight320: 16px;
   }
 }
 
-.logo {
+.title {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 
-  &__uptitle {
+  &__up {
     background-color: $bgColor;
     color: $regularTextColor;
     width: 98px;
@@ -217,7 +212,7 @@ $lineHeight320: 16px;
     }
   }
 
-  &__title {
+  &__main {
     border: 10px solid $regularTextColor;
     color: $regularTextColor;
     width: 556px;
@@ -236,11 +231,11 @@ $lineHeight320: 16px;
     }
   }
 
-  &__subtitle {
+  &__sub {
     color: $regularTextColor;
     max-width: 547px;
     line-height: 25px;
-    margin-top: 24px;
+    padding-top: 24px;
     font: {
       family: $openSansFont;
       size: 16px;
@@ -249,7 +244,7 @@ $lineHeight320: 16px;
     @media (max-width: 767px) {
       margin-left: 5px;
       margin-right: 5px;
-      margin-top: 10px;
+      padding-top: 10px;
       line-height: $lineHeight320;
       font-size: $fontSize320;
     }
@@ -291,6 +286,7 @@ $lineHeight320: 16px;
     color: $bgColor;
     background-color: $btnTextColor;
     border: 5px solid $bgColor;
+    cursor: pointer;
   }
 
   &:active {
@@ -322,30 +318,30 @@ $lineHeight320: 16px;
   &__data {
     display: flex;
     flex-direction: column;
-    margin-top: 28px;
+    padding-top: 28px;
     max-width: 557px;
     @media (max-width: 1199px) {
       max-width: unset;
       flex-basis: 50%;
-      margin-top: 0;
+      padding-top: 0;
     }
     @media (max-width: 767px) {
-      margin-top: 10px;
+      padding-top: 10px;
     }
   }
 
   &__info {
     margin-right: 15px;
+    margin-bottom: 17px;
     @media (max-width: 1199px) {
       margin-right: 0px;
+      margin-bottom: 5px;
     }
   }
 
   &__btn {
-    margin-top: 17px;
     align-self: flex-end;
     @media (max-width: 767px) {
-      margin-top: 5px;
       align-self: center;
     }
   }
@@ -487,23 +483,23 @@ $lineHeight320: 16px;
     justify-content: space-between;
     margin-left: 80px;
     margin-right: 80px;
-    margin-top: 97px;
+    padding-top: 97px;
     @media (max-width: 1199px) {
       margin-left: 40px;
       margin-right: 40px;
-      margin-top: 5px;
+      padding-top: 5px;
     }
     @media (max-width: 767px) {
       flex-direction: column;
       align-items: center;
       margin-left: 5px;
       margin-right: 5px;
-      margin-top: 5px;
+      padding-top: 5px;
     }
   }
 
   &__data {
-    margin-top: 18px;
+    padding-top: 18px;
     margin-right: 28px;
     display: grid;
     grid-template-rows: 1fr 1fr;
@@ -525,7 +521,7 @@ $lineHeight320: 16px;
     }
 
     @media (max-width: 767px) {
-      margin-top: 10px;
+      padding-top: 10px;
       align-self: unset;
     }
   }
@@ -553,7 +549,7 @@ $lineHeight320: 16px;
   }
 
   &__title {
-    margin-top: 13px;
+    padding-top: 13px;
     margin-bottom: 18px;
     line-height: 14px;
     font: {
@@ -564,7 +560,7 @@ $lineHeight320: 16px;
     @media (max-width: 1199px) {
       line-height: 20px;
       margin-bottom: 5px;
-      margin-top: 0px;
+      padding-top: 0px;
     }
     @media (max-width: 767px) {
       font-size: 16px;
@@ -590,19 +586,19 @@ $lineHeight320: 16px;
 
 .portfolio {
   &__body {
-    margin-top: 85px;
+    padding-top: 85px;
     margin-left: 80px;
     margin-right: 80px;
     display: flex;
     justify-content: space-between;
     @media (max-width: 1199px) {
-      margin-top: 5px;
+      padding-top: 5px;
       margin-left: 40px;
       margin-right: 40px;
       flex-direction: column;
     }
     @media (max-width: 767px) {
-      margin-top: 5px;
+      padding-top: 5px;
       margin-left: 5px;
       margin-right: 5px;
     }
@@ -735,7 +731,7 @@ $lineHeight320: 16px;
   display: grid;
   grid-template-columns: repeat(3, 260px);
   grid-column-gap: 35px;
-  margin-top: 12px;
+  padding-top: 12px;
 
   @media (max-width: 1199px) {
     grid-template-columns: repeat(3, minmax(200px, 260px));
@@ -783,7 +779,7 @@ $lineHeight320: 16px;
   }
 
   &__title {
-    margin-top: 11px;
+    padding-top: 11px;
     margin-left: 28px;
     color: $regularTextColor;
     max-width: 370px;
@@ -803,7 +799,7 @@ $lineHeight320: 16px;
   }
 
   &__subtitle {
-    margin-top: 2px;
+    padding-top: 2px;
     margin-left: 28px;
     color: $regularTextColor;
     max-width: 472px;
@@ -823,14 +819,14 @@ $lineHeight320: 16px;
   }
 
   &__input-group {
-    margin-top: 27px;
+    padding-top: 27px;
     margin-bottom: 17px;
     margin-left: 22px;
     margin-right: 26px;
     width: 511px;
     display: flex;
     @media (max-width: 767px) {
-      margin-top: 15px;
+      padding-top: 15px;
       width: unset;
     }
   }
@@ -884,7 +880,7 @@ $lineHeight320: 16px;
     }
   }
 
-  &__leftSide {
+  &__left-side {
     @media (max-width: 1199px) {
       display: flex;
       flex-direction: column;
@@ -898,6 +894,7 @@ $lineHeight320: 16px;
     line-height: 48px;
     letter-spacing: -0.5px;
     max-width: 494px;
+    margin-bottom: 15px;
     font: {
       family: $regularFont;
       weight: bold;
@@ -906,6 +903,7 @@ $lineHeight320: 16px;
     @media (max-width: 1199px) {
       max-width: unset;
       text-align: center;
+      margin-bottom: 10px;
     }
     @media (max-width: 767px) {
       line-height: 28px;
@@ -914,7 +912,6 @@ $lineHeight320: 16px;
   }
 
   &__btn {
-    margin-top: 15px;
     &:hover {
       color: $btnTextColor;
       background-color: $bgColor;
@@ -924,13 +921,6 @@ $lineHeight320: 16px;
       color: $btnTextColor;
       background-color: $bgColor;
       border: 10px solid $btnTextColor;
-    }
-    @media (max-width: 1199px) {
-      margin-top: 0px;
-    }
-    
-    @media (max-width: 1199px) {
-      margin-top: 10px;
     }
   }
 
@@ -947,7 +937,11 @@ $lineHeight320: 16px;
   &__body {
     display: flex;
     justify-content: space-between;
-    margin: 50px 80px;
+    padding-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 80px;
+    margin-right: 80px;
+
     @media (max-width: 1199px) {
      flex-direction: column;
      align-items: center;
@@ -955,7 +949,10 @@ $lineHeight320: 16px;
      margin-right: 40px;
     }
     @media (max-width: 767px) {
-      margin: 30px 5px;
+      padding-top: 30px;
+      margin-bottom: 30px;
+      margin-left: 5px;
+      margin-right: 5px;
     }
   }
 
@@ -1015,7 +1012,7 @@ $lineHeight320: 16px;
   &__info {
     flex-basis: 50%;
     @media (max-width: 1199px) {
-      margin-top: 20px;
+      padding-top: 20px;
       text-align: center;
       flex-basis: unset;
      }
@@ -1036,12 +1033,12 @@ $lineHeight320: 16px;
   }
 
   &__icons {
-    margin-top: 27px;
+    padding-top: 27px;
     display: flex;
     justify-content: flex-end;
     @media (max-width: 1199px) {
       justify-content: space-around;
-      margin-top: 25px;
+      padding-top: 25px;
      }
   }
 
