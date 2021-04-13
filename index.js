@@ -44,13 +44,5 @@ function showResult(data) {
 }
 
 function compare(a, b) {
-  if (a[1] < b[1]) {
-    return 1;
-  }
-  if (a[1] > b[1]) {
-    return -1;
-  }
-  if (a[1] === b[1]) {
-    return 0;
-  }
+  return b[1] - a[1]
 }
