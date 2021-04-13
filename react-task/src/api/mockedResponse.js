@@ -8,7 +8,7 @@ export const mockedResponse = [
   },
   {
     id: 2,
-    title: 'Videcard NVidia RTX 3090',
+    title: 'Videocard NVidia RTX 3090',
     description: 'Buy and start maining!',
     price: 9999,
     imageUrl: 'https://3dnews.ru/assets/external/illustrations/2020/10/12/1022750/3090_back.jpg'

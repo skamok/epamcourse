@@ -1,0 +1,14 @@
+.cardsCntr {
+  padding-top: 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 768px;
+  margin: 0 auto;
+
+  &__message {
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+  }
+}
