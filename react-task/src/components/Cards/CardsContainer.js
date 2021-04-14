@@ -28,5 +28,3 @@ export default class CardsContainer extends Component {
     )
   }
 }
-
-// {this.state.cards.map((card) => <Card key={card.id} card={card}/>)}
