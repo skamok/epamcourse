@@ -1,27 +1,13 @@
-import Header from './Header.js';
-import Footer from './Footer.js';
-import Main from './Main.js';
+import { colors } from './Colors.js';
+import Table from './Table.js';
 
 export default class App {
-  constructor(bodyElement) {
-    this.bodyElement = bodyElement;
+  constructor(mainElement) {
+    this.mainElement = mainElement;
   }
 
   init() {
-    this.generateHeader('Covid Death');
-    this.generateMain();
-    this.generateFooter();
-  }
-
-  generateHeader(caption) {
-    this.bodyElement.prepend(Header.generate(caption));
-  }
-
-  generateMain() {
-    this.bodyElement.append((new Main()).elementMain);
-  }
-
-  generateFooter() {
-    this.bodyElement.append(Footer.generate());
+    this.data = colors;
+    this.table = new Table(this.mainElement, this.data);
   }
 }

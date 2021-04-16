@@ -15,7 +15,7 @@ function importContext(data, distObj) {
 
 importContext(require.context('../images', true, /.(png|svg|jpg|jpeg|gif)$/), importImages);
 
-const bodyElement = document.getElementById('body');
+const mainElement = document.getElementById('main');
 
-const app = new App(bodyElement);
+const app = new App(mainElement);
 app.init();
