@@ -21,14 +21,10 @@ export const colors = [
   },
   {
     color: 'blue',
-    wave: 500
-  },
-  {
-    color: 'skyblue',
     wave: 470
   },
   {
     color: 'violet',
     wave: 425
-  },
+  }
 ];

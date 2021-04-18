@@ -70,9 +70,15 @@ body {
   }
 
   &__cell {
-    font-weight: normal;
+    font-weight: bold;
     font-size: 18px;
     border: 1px solid black;
+    text-align: center;
+  }
+
+  &__input {
+    width: 50px;
+    text-align: center;
   }
 }
 
@@ -103,4 +109,3 @@ body {
     }
   }
 }
-
