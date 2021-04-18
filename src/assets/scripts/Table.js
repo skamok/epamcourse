@@ -12,8 +12,8 @@ export default class Table {
     this.selectedRecord = null;
     this.selectedRecordValue = null;
     // sort options
-    this.sort = { 
-      id: 'color', 
+    this.sort = {
+      id: 'color',
       direct: 'asc'
     };
     // arrows in header of table
@@ -31,8 +31,8 @@ export default class Table {
   genereate() { // Table randering
     // if table exist remove it
     if (this.table) {
-      this.table.parentNode.removeChild(this.table)
-    };
+      this.table.parentNode.removeChild(this.table);
+    }
 
     this.table = DOMElement.create('table', 'main__table table',
       DOMElement.create('caption', 'table__caption', 'Rainbow'),
@@ -66,11 +66,11 @@ export default class Table {
     // render data rows of table first sort data in array
     this.sortData();
     this.data.forEach((element, index) => {
-      const color = DOMElement.create('td', 'table__cell', element.color, null,
+      const color = DOMElement.create('td', `table__cell table__cell_${element.color}`, element.color, null,
         ['data-row', index + 1], ['data-cell', 0]);
-      const wave = DOMElement.create('td', 'table__cell', element.wave.toString(), null,
+      const wave = DOMElement.create('td', `table__cell table__cell_${element.color}`, element.wave.toString(), null,
         ['data-row', index + 1], ['data-cell', 1]);
-      const row = DOMElement.create('tr', 'table__row', [color, wave], this.table);
+      DOMElement.create('tr', 'table__row', [color, wave], this.table);
     });
   }
 
@@ -80,8 +80,8 @@ export default class Table {
       if (parseInt(cell, 10)) {
         this.selectedRecord = row;
         this.selectedRecordValue = event.target.textContent;
-        this.showInput(row, cell)
-      };
+        this.showInput(row, cell);
+      }
     } else { // table header handler
       let target = null;
       if (event.target.tagName === 'I') {
@@ -90,18 +90,14 @@ export default class Table {
         target = event.target;
       }
       const { name, sort } = target.dataset;
-      console.log(this.sort);
       this.sort.id = name;
       if (sort === 'undef') {
         this.sort.direct = 'asc';
+      } else if (this.sort.direct === 'asc') {
+        this.sort.direct = 'dsc';
       } else {
-        if (this.sort.direct === 'asc') {
-          this.sort.direct = 'dsc';
-        } else {
-          this.sort.direct = 'asc';
-        }
+        this.sort.direct = 'asc';
       }
-      console.log(this.sort);
       this.genereate();
     }
   }
@@ -118,27 +114,24 @@ export default class Table {
 
   inputHandler = (event) => {
     const re = /^\d{1,}$/;
-    if (
-        ((event.type === 'keypress') && ((event.code === 'Enter') || (event.code === 'NumpadEnter'))) ||
-        (event.type === 'blur') 
-      ) 
-      {
-        // remove listener for prevent double triggering
-        if (event.type === 'keypress') this.input.removeEventListener('blur', this.inputHandler);
+    if (((event.type === 'keypress') && ((event.code === 'Enter') || (event.code === 'NumpadEnter')))
+      || (event.type === 'blur')) {
+      // remove listener for prevent double triggering
+      if (event.type === 'keypress') this.input.removeEventListener('blur', this.inputHandler);
 
-        if (this.input.value.search(re) > -1) {
-          if ((this.selectedRecordValue !== this.input.value)) {
-            this.data[this.selectedRecord - 1].wave = parseInt(this.input.value, 10);
-            this.genereate();
-          } else {
-            // prevent rerender table if value not changing
-            this.input.parentNode.textContent = this.selectedRecordValue;
-          }
+      if (this.input.value.search(re) > -1) {
+        if ((this.selectedRecordValue !== this.input.value)) {
+          this.data[this.selectedRecord - 1].wave = parseInt(this.input.value, 10);
+          this.genereate();
         } else {
-          // if user value not a number rewrite it with previous value
-          if (isNaN(parseInt(this.input.value))) this.input.parentNode.textContent = this.selectedRecordValue;
+          // prevent rerender table if value not changing
+          this.input.parentNode.textContent = this.selectedRecordValue;
         }
+      } else {
+        // if user value not a number rewrite it with previous value
+        if (Number.isNaN(parseInt(this.input.value, 10))) this.input.parentNode.textContent = this.selectedRecordValue;
       }
+    }
   }
 
   sortData() {
@@ -152,9 +145,8 @@ export default class Table {
             return this.sort.direct === 'asc' ? -1 : 1;
           }
           return 0;
-        })
-      break;
-      
+        });
+        break;
       case 'wave length':
         this.data.sort((a, b) => {
           if (a.wave > b.wave) {
@@ -164,11 +156,10 @@ export default class Table {
             return this.sort.direct === 'asc' ? -1 : 1;
           }
           return 0;
-        })
-      break;
-    
+        });
+        break;
       default:
-      break;
+        break;
     }
   }
 }
