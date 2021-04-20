@@ -25,6 +25,30 @@
     width: 100%;
   }
 
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__btnDelete {
+    // background-color: white;
+    // border: 2px solid red;
+    border-radius: 7px;
+    color: darkred;
+    font: {
+      size: 20px;
+      weight: bold;
+    }
+
+    &:hover {
+      font-size: 30px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+  }
+
   &__title {
     margin: 0;
     font: {
