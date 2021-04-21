@@ -1,5 +1,12 @@
 export const mockedResponse = [
   {
+    id: 0,
+    title: 'Apple MacBook Pro',
+    description: '13.3-inch (diagonal) LED-backlit display with IPS technology; 2560-by-1600 native resolution at 227 pixels per inch with support for millions of colors',
+    price: 2000,
+    imageUrl: 'https://www.notebookcheck-ru.com/uploads/tx_nbc2/AppleMacBookPro15-2018__1_.jpg'
+  },
+  {
     id: 1,
     title: 'Nokia 3310',
     description: 'The best phone of the world',
@@ -33,12 +40,5 @@ export const mockedResponse = [
     description: 'PlayStation 5. Play Has No Limitsю. Try to find and buy me.',
     price: 500,
     imageUrl: 'https://www.belconsole.by/pics/items/ps5.jpg'
-  },
-  {
-    id: 6,
-    title: 'Apple MacBook Pro',
-    description: '13.3-inch (diagonal) LED-backlit display with IPS technology; 2560-by-1600 native resolution at 227 pixels per inch with support for millions of colors',
-    price: 2000,
-    imageUrl: 'https://www.notebookcheck-ru.com/uploads/tx_nbc2/AppleMacBookPro15-2018__1_.jpg'
   }
 ]

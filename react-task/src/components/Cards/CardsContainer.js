@@ -20,14 +20,18 @@ function CardsContainer() {
     setCards(newCards);
   }
 
+  const cardAdd = (card) => {
+    setCards(prev => [{...card, id: prev.length}, ...prev]);
+  }
+
   return (
     <section className={styles.cardsCntr}>
-      <CardsCreationForm />
+      <CardsCreationForm cardAdd={cardAdd}/>
       <div className={styles.cardsCntr__cards}>
         {
           cards.length
           ? cards.map((card) => <Card key={card.id} card={card} cardDelete={cardDelete}/>)
-          : <p className={styles.cardsCntr__message}>Loading...</p>
+          : <p className={styles.cardsCntr__message}>No cards</p>
         }
       </div>      
     </section>

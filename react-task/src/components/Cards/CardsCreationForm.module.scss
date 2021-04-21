@@ -17,18 +17,10 @@
     justify-content: space-between;
   }
 
-  &__title {
-
+  &__label {
+    font-weight: bold;
   }
-
-  &__price {
-
-  }
-
-  &__link {
-
-  }
-
+  
   &__right {
     display: flex;
     flex-direction: column;
