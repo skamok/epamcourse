@@ -6,11 +6,13 @@ import { apiCall } from '../../api/mockedApi';
 
 function CardsContainer() {
   const [cards, setCards] = useState([]);
+  const [message, setMessage] = useState('Loading...');
 
   useEffect(() => {
     const fetchCards = async () => {
       const data = await apiCall();
       setCards(data);
+      if (data.length) setMessage('No cards.');
     }
     fetchCards();
   }, []);
@@ -31,7 +33,7 @@ function CardsContainer() {
         {
           cards.length
           ? cards.map((card) => <Card key={card.id} card={card} cardDelete={cardDelete}/>)
-          : <p className={styles.cardsCntr__message}>No cards</p>
+          : <p className={styles.cardsCntr__message}>{message}</p>
         }
       </div>      
     </section>
