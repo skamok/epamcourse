@@ -1,22 +1,43 @@
-const plus = (x, y) => x + y;
-const minus = (x, y) => x - y;
-const multiply = (x, y) => x * y;
-const devide = (x, y) => x / y;
+const rnd = () => Math.floor(Math.random() * 5000 + 1);
 
-const operation = (x, y, operator) => {
+const plus = (x, y) => {
+  return new Promise(resolve => {
+    setTimeout(() => resolve(x + y), rnd());
+  })
+};
+
+const minus = (x, y) => {
+  return new Promise(resolve => {
+    setTimeout(() => resolve(x - y), rnd());
+  })
+};
+
+const multiply = (x, y) => {
+  return new Promise(resolve => {
+    setTimeout(() => resolve(x * y), rnd());
+  })
+};
+
+const devide = (x, y) => {
+  return new Promise(resolve => {
+    setTimeout(() => resolve(x / y), rnd());
+  })
+};
+
+const operation = async (x, y, operator) => {
   let res = 0;
   switch (operator) {
     case '+':
-      res = plus(x, y);
+      res = await plus(x, y);
       break;
     case '-':
-      res = minus(x, y);
+      res = await minus(x, y);
       break;
     case '*':
-      res = multiply(x, y);
+      res = await multiply(x, y);
       break;
     case '/':
-      res = devide(x, y);
+      res = await devide(x, y);
       break;
     default:
       break;
@@ -33,7 +54,7 @@ const isOperation = (element) => {
   return false;
 } 
 
-const calculate = (arr) => {
+const calculate = async (arr) => {
   console.log(arr);
   if (arr.length === 1) {
     return arr[0];
@@ -44,7 +65,7 @@ const calculate = (arr) => {
     return arr[0]
   }
 
-  const res = operation(arr[pos - 2], arr[pos - 1], arr[pos]);
+  const res = await operation(arr[pos - 2], arr[pos - 1], arr[pos]);
 
   if (pos === (arr.length - 1)) {
     return res;
@@ -57,4 +78,31 @@ const calculate = (arr) => {
   }
 }
 
-console.log(calculate(polish));
+calculate(polish).then((res) => console.log('res=', res));
+
+
+/*
+const foo = async (x, y, operator) => {
+  let res = 0;
+  switch (operator) {
+    case '+':
+      res = await plus(x, y);
+      break;
+    case '-':
+      res = minus(x, y);
+      break;
+    case '*':
+      res = multiply(x, y);
+      break;
+    case '/':
+      res = devide(x, y);
+      break;
+    default:
+      break;
+  }
+  console.log('foo', res);
+  return res; 
+}
+
+ console.log(foo(2, 7, '+'));
+ */
