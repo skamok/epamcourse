@@ -8,5 +8,6 @@ Deploys
 6. Creative Agency https://skamok.github.io/epamcourse/agency/index.html
 7. React Task https://skamok.github.io/epamcourse/reacttask/index.html
 8. Deploy React Task https://skamok.github.io/epamcourse/tolstoy/index.html
-8. Deploy Tic Tac Toe Task https://skamok.github.io/epamcourse/tictac/index.html
-8. Deploy Table Task https://skamok.github.io/epamcourse/table/index.html
+9. Deploy Tic Tac Toe Task https://skamok.github.io/epamcourse/tictac/index.html
+10. Deploy Table Task https://skamok.github.io/epamcourse/table/index.html
+11. Deploy Table Task https://skamok.github.io/epamcourse/quirk/index.html
