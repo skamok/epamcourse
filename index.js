@@ -1,4 +1,11 @@
-const rnd = () => Math.floor(Math.random() * 5000 + 1);
+const MAX_DELAY = 3000;
+
+const inputElement = document.getElementById('polish');
+const formElement = document.getElementById('form');
+const stepsElement = document.getElementById('steps');
+const resultElement = document.getElementById('result');
+
+const rnd = () => Math.floor(Math.random() * MAX_DELAY + 1);
 
 const plus = (x, y) => {
   return new Promise(resolve => {
@@ -24,7 +31,18 @@ const devide = (x, y) => {
   })
 };
 
-const operation = async (x, y, operator) => {
+const showStep = (data) => {
+  const pElement = document.createElement('p');
+  pElement.className='card-text';
+  pElement.textContent=JSON.stringify(data);
+  stepsElement.appendChild(pElement);
+}
+
+const clearSteps = () => {
+  stepsElement.innerHTML = '';
+}
+
+const applyOperator = async (x, y, operator) => {
   let res = 0;
   switch (operator) {
     case '+':
@@ -45,9 +63,7 @@ const operation = async (x, y, operator) => {
   return res;
 }
 
-const polish = [1, 2, '+', 3, '*', 4, '+'];
-
-const isOperation = (element) => {
+const isOperator = (element) => {
   if ((element === '+') || (element === '*') || (element === '/') || (element === '-')) {
     return true;
   }
@@ -55,17 +71,17 @@ const isOperation = (element) => {
 } 
 
 const calculate = async (arr) => {
-  console.log(arr);
+  showStep(arr);
   if (arr.length === 1) {
     return arr[0];
   }
 
-  const pos = arr.findIndex(isOperation);
+  const pos = arr.findIndex(isOperator);
   if (pos === -1) {
-    return arr[0]
+    return arr[0];
   }
 
-  const res = await operation(arr[pos - 2], arr[pos - 1], arr[pos]);
+  const res = await applyOperator(arr[pos - 2], arr[pos - 1], arr[pos]);
 
   if (pos === (arr.length - 1)) {
     return res;
@@ -78,31 +94,25 @@ const calculate = async (arr) => {
   }
 }
 
-calculate(polish).then((res) => console.log('res=', res));
-
-
-/*
-const foo = async (x, y, operator) => {
-  let res = 0;
-  switch (operator) {
-    case '+':
-      res = await plus(x, y);
-      break;
-    case '-':
-      res = minus(x, y);
-      break;
-    case '*':
-      res = multiply(x, y);
-      break;
-    case '/':
-      res = devide(x, y);
-      break;
-    default:
-      break;
-  }
-  console.log('foo', res);
-  return res; 
+const showResult = (data) => {
+  resultElement.textContent = data;
 }
 
- console.log(foo(2, 7, '+'));
- */
+const stringToArray = (str) => {
+  return str.trim().split(' ').map((element) => {
+    if (Number.isNaN(Number.parseFloat(element))) {
+      return element;
+    } else {
+      return Number.parseFloat(element);
+    }
+  });
+}
+
+const btnCalcClick = (event) => {
+  event.preventDefault();
+  clearSteps();
+  const expression = stringToArray(inputElement.value);
+  calculate(expression).then((res) => showResult(res));
+}
+
+formElement.addEventListener('submit', btnCalcClick);
