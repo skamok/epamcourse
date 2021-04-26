@@ -9,7 +9,7 @@ function CardsCreationForm({ cardAdd }) {
     description: '',
     imageUrl: ''
   });
-  console.log('form render');
+
   const btnAddClick = (event) => {
     event.preventDefault();
 

@@ -33,7 +33,6 @@ function CardsContainer() {
   const cardAdd = useCallback(
     (card) => {
       setCards(prev => [{...card, id: mockedGenerateID()}, ...prev]);
-      console.log('cardAdd');
     },
     []
   )
