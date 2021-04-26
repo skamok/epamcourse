@@ -10,4 +10,4 @@ Deploys
 8. Deploy React Task https://skamok.github.io/epamcourse/tolstoy/index.html
 9. Deploy Tic Tac Toe Task https://skamok.github.io/epamcourse/tictac/index.html
 10. Deploy Table Task https://skamok.github.io/epamcourse/table/index.html
-11. Deploy Table Task https://skamok.github.io/epamcourse/quirk/index.html
+11. Deploy Quirk Number Task https://skamok.github.io/epamcourse/quirk/index.html
