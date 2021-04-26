@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import styles from './CardsCreationForm.module.scss';
 
 function CardsCreationForm({ cardAdd }) {
@@ -10,9 +10,8 @@ function CardsCreationForm({ cardAdd }) {
     imageUrl: ''
   });
 
-  const btnAddClick = (event) => {
+  const btnAddClick = useCallback((event) => {
     event.preventDefault();
-
     if (inputs.title.length && inputs.price.length && inputs.description.length && inputs.imageUrl.length) {
       const card = {
         title: inputs.title,
@@ -22,7 +21,7 @@ function CardsCreationForm({ cardAdd }) {
       }
       cardAdd(card);
     }
-  }
+  }, [inputs, cardAdd]);
 
   const inputChange = (event) => {
     const field = event.target.id;

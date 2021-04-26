@@ -2,13 +2,15 @@ import PropTypes from 'prop-types';
 import styles from './Card.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useCallback } from 'react';
 
-function Card({card, cardDelete}) {
-  const btnDelete = <FontAwesomeIcon icon={faTimes} className={styles.card__btnDelete} onClick={btnDelClick}/>;
+function Card({ card, cardDelete }) {
 
-  function btnDelClick() {
+  const btnDelClick = useCallback(() => {
     cardDelete(card.id);
-  }
+  }, [card, cardDelete]);
+
+  const btnDelete = <FontAwesomeIcon icon={faTimes} className={styles.card__btnDelete} onClick={btnDelClick}/>;
 
   return (
     <div className={styles.card}>
