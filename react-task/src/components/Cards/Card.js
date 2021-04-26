@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 function Card({card, cardDelete}) {
-  const btnClose = <FontAwesomeIcon icon={faTimes} className={styles.card__btnDelete} onClick={btnDelClick}/>;
+  const btnDelete = <FontAwesomeIcon icon={faTimes} className={styles.card__btnDelete} onClick={btnDelClick}/>;
 
   function btnDelClick() {
     cardDelete(card.id);
@@ -18,8 +18,7 @@ function Card({card, cardDelete}) {
       <div className={styles.card__info}>
         <div className={styles.card__header}>
         <p className={styles.card__title}>{card.title}</p>
-        {/* <button className={styles.card__btnDelete}>{btnClose}</button> */}
-        {btnClose}
+        {btnDelete}
         </div>
         <p className={styles.card__description}>{card.description}</p>
         <p className={styles.card__price}>{`${card.price} $`}</p>
@@ -30,7 +29,7 @@ function Card({card, cardDelete}) {
 
 Card.propTypes = {
   card: PropTypes.shape({
-    id: PropTypes.number,
+    id: PropTypes.string,
     title: PropTypes.string,
     description: PropTypes.string,
     price: PropTypes.number,
