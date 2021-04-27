@@ -12,9 +12,7 @@ function CardsContainer() {
   const fetchCards = async () => {
     setMessage('Loading...');
     apiCall()
-      .then((data) => {
-          setCards(data);
-      });
+      .then(data => setCards(data));
   }
 
   useEffect(() => {
