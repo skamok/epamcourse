@@ -1,0 +1,14 @@
+.main {
+  background-color: lightcyan;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+}
+
+.avatar {
+  max-width: 256px;
+  margin: 0 auto;
+  &__image {
+    width: 100%;
+  }
+}
