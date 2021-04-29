@@ -4,6 +4,7 @@
   display: flex;
   justify-content: space-around;
   background-color: lightgreen;
+  position: relative;
 
   &__left {
     display: flex;
@@ -29,5 +30,14 @@
 
   &__button {
     width: 100px;
+  }
+
+  &__error {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: yellow;
+    font-weight: bold;
+    text-align: center;
   }
 }
