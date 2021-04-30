@@ -1,0 +1,13 @@
+.dropdown-w5 {
+  min-width: 5rem;
+}
+
+.dropdown-w9 {
+  min-width: 7rem;
+}
+
+.scrollable-menu {
+  height: auto;
+  max-height: 200px;
+  overflow-x: hidden;
+}
