@@ -4,3 +4,4 @@ Home task
 3. Handle possible error cases
 4. Push code to repo “gold”
 5. https://ratesapi.io/documentation/
+6. Deploy https://skamok.github.io/epamcourse/gold/index.html
