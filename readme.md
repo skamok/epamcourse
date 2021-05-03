@@ -12,4 +12,4 @@ Deploys
 10. Deploy Table Task https://skamok.github.io/epamcourse/table/index.html
 11. Deploy Quirk Number Task https://skamok.github.io/epamcourse/quirk/index.html
 12. Deploy React Task 4 https://react-task4.netlify.app/
-13. Deploy Quirk Number Task https://skamok.github.io/epamcourse/gold/index.html
+13. Deploy Gold Task https://skamok.github.io/epamcourse/gold/index.html
