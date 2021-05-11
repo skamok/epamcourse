@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/App'
+import App from './components/App';
+import {BrowserRouter as Router} from "react-router-dom";
 
 const store = {
   user: {
@@ -16,7 +17,9 @@ const store = {
 
 ReactDOM.render(
   <React.StrictMode>
-    <App store={store} />
+    <Router>
+      <App store={store} />
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

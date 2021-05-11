@@ -49,5 +49,4 @@ function CardsContainer() {
   )
 }
 
-export default CardsContainer
-
+export default CardsContainer;

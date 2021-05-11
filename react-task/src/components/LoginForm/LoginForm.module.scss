@@ -1,0 +1,24 @@
+.form {
+  background-color: steelblue;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 320px;
+  padding: 20px;
+  
+  &__input {
+    margin-bottom: 10px;
+    font-size: 24px;
+
+    &_error {
+      &::placeholder {
+        color: red;
+      }
+    }
+  }
+
+  &__button {
+    font-size: 24px;
+    align-self: center;
+  }
+}

@@ -1,5 +1,28 @@
 import mockedGenerateID from './mockedGenerateId.js';
 
+export const mockedAccount = [
+  {
+    login: 'stas',
+    psw: '123',
+    info: {
+      firstName: 'Fedor',
+      lastName: 'Matroskin',
+      image: 'https://download-cs.net/steam/avatars/3149.jpg',
+      alt: 'Captain Cat'
+    },
+  },
+  {
+    login: 'Yury',
+    psw: '456',
+    info: {
+      firstName: 'Yury',
+      lastName: 'Aniskou',
+      image: 'https://media-exp1.licdn.com/dms/image/C5603AQGWub51k1fnlw/profile-displayphoto-shrink_200_200/0/1580910079577?e=1626307200&v=beta&t=C8H_VoabXeA7sLsRgVmU4yQGsrAbjE-s8goh1ncj3ow',
+      alt: 'Epam frontend'
+    }
+  }
+]
+
 export const mockedResponse = [
   {
     id: mockedGenerateID(),
