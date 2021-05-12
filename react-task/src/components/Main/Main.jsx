@@ -1,6 +1,7 @@
 import styles from './Main.module.scss';
 import CardsContainer from '../Cards';
 import LoginForm from '../LoginForm';
+import Profile from '../Profile';
 import {Switch, Route, Redirect} from "react-router-dom";
 
 function Main({updateUserInfo, user}) {
@@ -14,6 +15,12 @@ function Main({updateUserInfo, user}) {
           user.logged &&
           <Route exact path='/cards'>
             <CardsContainer />
+          </Route>
+        }
+        {
+          user.logged &&
+          <Route exact path='/profile'>
+            <Profile user={user}/>
           </Route>
         }
         <Route path="/">

@@ -3,7 +3,7 @@ import styles from './CardsContainer.module.scss';
 import Card from './Card.jsx';
 import CardsCreationForm from './CardsCreationForm.jsx';
 import { apiCall } from '../../api/mockedApi';
-import mockedGenerateID from '../../api/mockedGenerateId.js';
+import { v1 as uuidv1 } from 'uuid';
 
 function CardsContainer() {
   const [cards, setCards] = useState([]);
@@ -30,7 +30,7 @@ function CardsContainer() {
 
   const cardAdd = useCallback(
     (card) => {
-      setCards(prev => [{...card, id: mockedGenerateID()}, ...prev]);
+      setCards(prev => [{...card, id: uuidv1()}, ...prev]);
     },
     []
   )
