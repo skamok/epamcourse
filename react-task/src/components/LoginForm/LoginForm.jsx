@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./LoginForm.module.scss";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import classNames from 'classnames';
+import {apiLogin} from '../../api/mockedApi.js';
 
-function LoginForm({loginUser}) {
+function LoginForm({updateUserInfo}) {
   const [inputs, setInputs] = useState({
     login: '',
     password: ''
@@ -12,26 +13,38 @@ function LoginForm({loginUser}) {
 
   const [errors, setErrors] = useState({
     login: false,
-    password: false
+    password: false,
+    message: false
   });
 
   const inputChange = (event) => {
     const {name, value} = event.currentTarget;
     setInputs({...inputs, [name]: value});
-    setErrors({...errors, [name]: false});
+    setErrors({...errors, [name]: false, message: false});
   }
 
-  const btnLoginClick = (event) => {
+  const fetchUser = useCallback(async (user, password) => {
+    apiLogin(user, password).then((result) => {
+      if (result) {
+        const userInfo = {...result, logged: true};
+        updateUserInfo(userInfo);
+      } else {
+        setErrors({...errors, message: true})
+      }
+    });
+  }, [updateUserInfo, errors]);
+
+  const btnLoginClick = useCallback((event) => {
     event.preventDefault();
     if (inputs.login && inputs.password) {
-      loginUser(inputs.login, inputs.password);
+      fetchUser(inputs.login, inputs.password);
     } else {
       setErrors({
         login: inputs.login ? false : true,
         password: inputs.password ? false : true
       })
     }
-  }
+  }, [inputs, fetchUser]);
 
   return (
     <form className={styles.form} onSubmit={btnLoginClick}>
@@ -51,6 +64,7 @@ function LoginForm({loginUser}) {
         value={inputs.password}
         onChange={inputChange}
       />
+      <p className={classNames(styles.form__message, {[styles.form__message_visible]: errors.message})}>Wrong username or password!</p>
       <button className={styles.form__button} type="submit">
         Login
       </button>
@@ -59,7 +73,7 @@ function LoginForm({loginUser}) {
 }
 
 LoginForm.propTypes = {
-  loginUser: PropTypes.func.isRequired
+  updateUserInfo: PropTypes.func.isRequired
 };
 
 export default LoginForm;

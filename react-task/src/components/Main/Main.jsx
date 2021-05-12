@@ -3,13 +3,12 @@ import CardsContainer from '../Cards';
 import LoginForm from '../LoginForm';
 import {Switch, Route, Redirect} from "react-router-dom";
 
-function Main({loginUser, user}) {
-  console.log(user);
+function Main({updateUserInfo, user}) {
   return (
     <main className={styles.main}>
       <Switch>
         <Route exact path='/loginForm'>
-          <LoginForm loginUser={loginUser}/>
+          <LoginForm updateUserInfo={updateUserInfo}/>
         </Route>
         {
           user.logged &&

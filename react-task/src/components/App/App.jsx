@@ -2,9 +2,8 @@ import styles from './App.module.scss';
 import Header from '../Header';
 import Main from '../Main';
 import Footer from '../Footer';
-import {apiLogin} from '../../api/mockedApi.js';
 import {useHistory } from "react-router-dom";
-import {useCallback, useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 
 function App() {
   const [user, setUser] = useState(() => {
@@ -25,23 +24,12 @@ function App() {
     }
   }, [user, history]);
 
-  const loginUser = useCallback(
-    (user, password) => {
-      apiLogin(user, password).then((result) => {
-        if (result) {
-          const userInfo = {...result, logged: true};
-          setUser(userInfo);
-        } else {
-
-        }
-      });
-    }, []
-  );  
+  const updateUserInfo = (userInfo) => setUser(userInfo); 
 
   return (
       <div className={styles.app}>
         <Header user={user} />
-        <Main loginUser={loginUser} user={user}/>
+        <Main updateUserInfo={updateUserInfo} user={user}/>
         <Footer />
       </div>
   );

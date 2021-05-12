@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import styles from './CardsContainer.module.scss';
-import Card from './Card.js';
-import CardsCreationForm from './CardsCreationForm.js';
+import Card from './Card.jsx';
+import CardsCreationForm from './CardsCreationForm.jsx';
 import { apiCall } from '../../api/mockedApi';
 import mockedGenerateID from '../../api/mockedGenerateId.js';
 
