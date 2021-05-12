@@ -1,0 +1,25 @@
+{
+  "name": "es5",
+  "version": "1.0.0",
+  "description": "Home task\r 1. Develop page with two dropdowns “Base” and “Symbol”\r 2. Values of selections should invoke render of currency rates from https://api.ratesapi.io/api/latest\r 3. Handle possible error cases\r 4. Push code to repo “gold”\r 5. https://ratesapi.io/documentation/\r 6. Deploy https://skamok.github.io/epamcourse/gold/index.html",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel index.js --out-file index-babel.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skamok/epamcourse.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skamok/epamcourse/issues"
+  },
+  "homepage": "https://github.com/skamok/epamcourse#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.13.16",
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.1"
+  }
+}
