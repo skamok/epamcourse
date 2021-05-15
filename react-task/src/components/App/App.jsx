@@ -5,15 +5,11 @@ import Footer from '../Footer';
 import {useHistory } from "react-router-dom";
 import {useState, useEffect} from 'react';
 import {defaultUser} from '../../constants.js';
-import { useSelector} from 'react-redux';
 
 function App() {
   const [user, setUser] = useState(() => defaultUser);
 
   let history = useHistory();
-
-  const cards = useSelector((state) => state.cards);
-  console.log('cards=', cards);
 
   useEffect(() => {
     if (user.logged) {

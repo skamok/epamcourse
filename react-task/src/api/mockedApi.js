@@ -6,6 +6,12 @@ export const apiCall = () => {
   })
 }
 
+export const apiCards = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(mockedResponse), 2500);
+  })
+}
+
 export const apiLogin = (login, password) => {
   return new Promise((resolve) => {
     setTimeout(() => {
