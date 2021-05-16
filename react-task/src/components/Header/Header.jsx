@@ -1,13 +1,16 @@
 import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
-import PropTypes from "prop-types";
 import {useCallback} from 'react';
-import {defaultUser} from '../../constants.js';
+import {useStore, useSelector} from 'react-redux';
+import {logoutUser} from '../../redux/actions/user.js';
 
-function Header({ user, updateUserInfo }) {
-  const linkLogoutClick = useCallback(() => updateUserInfo(defaultUser),
-    [updateUserInfo]);
+function Header() {
+  const store = useStore();
+  const user = useSelector((state) => state.user);
+
+  const linkLogoutClick = useCallback(() => store.dispatch(logoutUser()),
+    [store]);
 
   return (
     <header className={styles.header}>
@@ -37,13 +40,5 @@ function Header({ user, updateUserInfo }) {
     </header>
   );
 }
-
-Header.propTypes = {
-  user: PropTypes.shape({
-    firstName: PropTypes.string,
-    image: PropTypes.string,
-    alt: PropTypes.string,
-  }).isRequired,
-};
 
 export default Header;

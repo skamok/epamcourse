@@ -3,27 +3,26 @@ import Header from '../Header';
 import Main from '../Main';
 import Footer from '../Footer';
 import {useHistory } from "react-router-dom";
-import {useState, useEffect} from 'react';
-import {defaultUser} from '../../constants.js';
+import {useEffect} from 'react';
+import {useSelector} from 'react-redux';
 
 function App() {
-  const [user, setUser] = useState(() => defaultUser);
+  const user = useSelector((state) => state.user);
 
-  let history = useHistory();
+  const history = useHistory();
 
   useEffect(() => {
     if (user.logged) {
       history.push('/cards');
     } else {
-    }
-  }, [user, history]);
 
-  const updateUserInfo = (userInfo) => setUser(userInfo); 
+    }
+  }, [user, history]); 
 
   return (
       <div className={styles.app}>
-        <Header user={user} updateUserInfo={updateUserInfo}/>
-        <Main updateUserInfo={updateUserInfo} user={user}/>
+        <Header />
+        <Main />
         <Footer />
       </div>
   );

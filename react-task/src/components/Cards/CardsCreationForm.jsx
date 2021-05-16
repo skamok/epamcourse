@@ -1,8 +1,12 @@
-import PropTypes from 'prop-types';
 import { useState, useCallback, useRef} from 'react';
 import styles from './CardsCreationForm.module.scss';
+import { v1 as uuidv1 } from 'uuid';
+import { useStore} from 'react-redux';
+import { addCard } from '../../redux/actions/cards.js';
 
-function CardsCreationForm({ cardAdd }) {
+function CardsCreationForm() {
+  const store = useStore();
+
   const title = useRef(null);
   const price = useRef(null);
   const imageUrl = useRef(null);
@@ -48,14 +52,15 @@ function CardsCreationForm({ cardAdd }) {
     setInputWarning(error);
     if (!error) {
       const card = {
+        id: uuidv1(),
         title: inputs.title,
         description: inputs.description,
         price: Number.parseFloat(inputs.price),
         imageUrl: inputs.imageUrl
       }
-      cardAdd(card);
+      store.dispatch(addCard(card));
     }
-  }, [inputs, cardAdd, checkInputComplete]);
+  }, [inputs, checkInputComplete, store]);
 
   const inputChange = (event) => {
     const {name, value} = event.currentTarget;
@@ -88,10 +93,6 @@ function CardsCreationForm({ cardAdd }) {
       }
     </form>
   )
-}
-
-CardsCreationForm.propTypes = {
-  cardAdd: PropTypes.func.isRequired
 }
 
 export default CardsCreationForm;

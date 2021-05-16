@@ -1,11 +1,14 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styles from "./LoginForm.module.scss";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import classNames from 'classnames';
-import {apiLogin} from '../../api/mockedApi.js';
+import {useStore, useSelector} from 'react-redux';
+import { loadUser } from '../../redux/actions/user.js';
 
-function LoginForm({updateUserInfo}) {
+function LoginForm() {
+  const store = useStore();
+  const user = useSelector((state) => state.user);
+
   const [inputs, setInputs] = useState({
     login: '',
     password: ''
@@ -23,28 +26,23 @@ function LoginForm({updateUserInfo}) {
     setErrors({...errors, [name]: false, message: false});
   }
 
-  const fetchUser = useCallback(async (user, password) => {
-    apiLogin(user, password).then((result) => {
-      if (result) {
-        const userInfo = {...result, logged: true};
-        updateUserInfo(userInfo);
-      } else {
-        setErrors({...errors, message: true})
-      }
-    });
-  }, [updateUserInfo, errors]);
-
   const btnLoginClick = useCallback((event) => {
     event.preventDefault();
     if (inputs.login && inputs.password) {
-      fetchUser(inputs.login, inputs.password);
+      store.dispatch(loadUser(inputs.login, inputs.password));
     } else {
       setErrors({
         login: inputs.login ? false : true,
         password: inputs.password ? false : true
       })
     }
-  }, [inputs, fetchUser]);
+  }, [inputs, store]);
+
+  useEffect(() => {
+    if (user.error) {
+      setErrors({...errors, message: true})
+    }
+  }, [user.error]);
 
   return (
     <form className={styles.form} onSubmit={btnLoginClick}>
@@ -71,9 +69,5 @@ function LoginForm({updateUserInfo}) {
     </form>
   );
 }
-
-LoginForm.propTypes = {
-  updateUserInfo: PropTypes.func.isRequired
-};
 
 export default LoginForm;

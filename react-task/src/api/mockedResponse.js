@@ -5,7 +5,7 @@ export const mockedAccount = [
     login: 'stas',
     psw: '123',
     info: {
-      firstName: 'Stas',
+      firstName: 'Stanislav',
       lastName: 'Karshankou',
       image: 'https://download-cs.net/steam/avatars/3149.jpg',
       alt: 'Captain Cat',

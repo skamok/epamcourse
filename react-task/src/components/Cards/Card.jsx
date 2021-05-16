@@ -3,12 +3,16 @@ import styles from './Card.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { useCallback } from 'react';
+import { deleteCard } from '../../redux/actions/cards.js';
+import { useStore } from 'react-redux';
 
-function Card({ card, cardDelete }) {
+function Card({ card }) {
+
+  const store = useStore();
 
   const btnDelClick = useCallback(() => {
-    cardDelete(card.id);
-  }, [card, cardDelete]);
+    store.dispatch(deleteCard(card.id));
+  }, [store, card.id]);
 
   const btnDelete = <FontAwesomeIcon icon={faTimes} className={styles.card__btnDelete} onClick={btnDelClick}/>;
 
@@ -36,9 +40,7 @@ Card.propTypes = {
     description: PropTypes.string,
     price: PropTypes.number,
     imageUrl: PropTypes.string
-  }).isRequired,
-
-  cardDelete: PropTypes.func.isRequired
+  }).isRequired
 };
 
 export default Card;

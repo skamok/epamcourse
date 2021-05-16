@@ -3,13 +3,15 @@ import CardsContainer from '../Cards';
 import LoginForm from '../LoginForm';
 import Profile from '../Profile';
 import {Switch, Route, Redirect} from "react-router-dom";
+import {useSelector} from 'react-redux';
 
-function Main({updateUserInfo, user}) {
+function Main() {
+  const user = useSelector((state) => state.user);
   return (
     <main className={styles.main}>
       <Switch>
         <Route exact path='/loginForm'>
-          <LoginForm updateUserInfo={updateUserInfo}/>
+          <LoginForm />
         </Route>
         {
           user.logged &&
@@ -20,7 +22,7 @@ function Main({updateUserInfo, user}) {
         {
           user.logged &&
           <Route exact path='/profile'>
-            <Profile user={user}/>
+            <Profile />
           </Route>
         }
         <Route path="/">
