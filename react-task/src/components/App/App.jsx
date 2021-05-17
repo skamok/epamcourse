@@ -14,8 +14,6 @@ function App() {
   useEffect(() => {
     if (user.logged) {
       history.push('/cards');
-    } else {
-
     }
   }, [user, history]); 
 

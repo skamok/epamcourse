@@ -1,5 +1,5 @@
 import { apiLogin } from '../../api/mockedApi.js';
-import { LOAD_USER, LOGOUT_USER } from './types.js';
+import { LOAD_USER, LOGOUT_USER, ERROR_USER } from './types.js';
 
 export const loadUser = (login, password) => 
   (dispatch) => apiLogin(login, password)
@@ -8,8 +8,7 @@ export const loadUser = (login, password) =>
         const userInfo = {...result, logged: true};
         dispatch({type: LOAD_USER, payload: userInfo})
       } else {
-        const userInfo = {error: true};
-        dispatch({type: LOAD_USER, payload: userInfo})
+        dispatch({type: ERROR_USER, payload: true})
     }
 });
 

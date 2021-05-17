@@ -1,4 +1,4 @@
-import { LOAD_USER, LOGOUT_USER } from '../actions/types.js';
+import { LOAD_USER, LOGOUT_USER, ERROR_USER } from '../actions/types.js';
 
 const initialState = {
   firstName: 'Guest',
@@ -13,6 +13,9 @@ const user = (state = initialState, action) => {
     }
     case LOGOUT_USER: {
       return {...initialState};
+    }
+    case ERROR_USER: {
+      return {...initialState, error: action.payload};
     }
     default:
       return {...state}

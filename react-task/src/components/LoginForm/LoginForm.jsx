@@ -40,7 +40,7 @@ function LoginForm() {
 
   useEffect(() => {
     if (user.error) {
-      setErrors({...errors, message: true})
+      setErrors((prev) => ({...prev, message: true}))
     }
   }, [user.error]);
 
