@@ -1,4 +1,4 @@
-const MAX_DELAY = 3000;
+const MAX_DELAY = 2000;
 
 const inputElement = document.getElementById('polish');
 const formElement = document.getElementById('form');
@@ -64,10 +64,7 @@ const applyOperator = async (x, y, operator) => {
 }
 
 const isOperator = (element) => {
-  if ((element === '+') || (element === '*') || (element === '/') || (element === '-')) {
-    return true;
-  }
-  return false;
+  return ((element === '+') || (element === '*') || (element === '/') || (element === '-'));
 } 
 
 const calculate = async (arr) => {
@@ -85,13 +82,12 @@ const calculate = async (arr) => {
 
   if (pos === (arr.length - 1)) {
     return res;
-  } else {
-    const leftArr = arr.slice(0, pos - 2);
-    leftArr.push(res);
-    const rightArr = arr.slice(pos + 1);
-    const newArr = leftArr.concat(rightArr);
-    return calculate(newArr);
   }
+  const leftArr = arr.slice(0, pos - 2);
+  leftArr.push(res);
+  const rightArr = arr.slice(pos + 1);
+  const newArr = leftArr.concat(rightArr);
+  return calculate(newArr);
 }
 
 const showResult = (data) => {
@@ -102,9 +98,8 @@ const stringToArray = (str) => {
   return str.trim().split(' ').map((element) => {
     if (Number.isNaN(Number.parseFloat(element))) {
       return element;
-    } else {
-      return Number.parseFloat(element);
     }
+    return Number.parseFloat(element);
   });
 }
 
