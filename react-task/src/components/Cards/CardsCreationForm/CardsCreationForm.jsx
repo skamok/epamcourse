@@ -1,8 +1,11 @@
+// Как поступить с инпутами если есть еще и текстареа
+// как прокинуть ref в map
 import { useState, useCallback, useRef} from 'react';
 import styles from './CardsCreationForm.module.scss';
 import { v1 as uuidv1 } from 'uuid';
 import { useStore} from 'react-redux';
-import { addCard } from '../../redux/actions/cards.js';
+import { addCard } from '../../../redux/actions/cards.js';
+import InputField from './InputField/InputField';
 
 function CardsCreationForm() {
   const store = useStore();
@@ -15,7 +18,7 @@ function CardsCreationForm() {
   const [inputs, setInputs] = useState({
     title: '',
     price: 1,
-    description: '',
+    // description: '',
     imageUrl: ''
   });
   const [inputWarning, setInputWarning] = useState(() => null);
@@ -66,11 +69,11 @@ function CardsCreationForm() {
     const {name, value} = event.currentTarget;
     setInputs({...inputs, [name]: value});
   }
-
+  console.log(inputs);
   return (
     <form className={styles.form} onSubmit={btnAddClick}>
       <div className={styles.form__left}>
-        <div className={styles.form__input}>
+        {/* <div className={styles.form__input}>
           <label htmlFor="title" className={styles.form__label}>Title</label>
           <input type="text" placeholder="Title" ref={title} name="title" id="title" maxLength="32" value={inputs.title} onChange={inputChange} className={styles.form__title}/>
         </div>
@@ -81,7 +84,12 @@ function CardsCreationForm() {
         <div className={styles.form__input}>
         <label htmlFor="imageUrl" className={styles.form__label}>Link to image</label>
           <input type="text" placeholder="link to image" ref={imageUrl} name="imageUrl" id="imageUrl" value={inputs.imageUrl} onChange={inputChange} className={styles.form__link}/>
-        </div>
+        </div> */}
+        {
+          Object.entries(inputs).map(([field, value]) => {
+            return <InputField key={field} fieldName={field} fieldValue={value} inputChange={inputChange}/>
+          })
+        }
       </div>
       <div className={styles.form__right}>
         <textarea name="description" cols="40" rows="3" ref={description} placeholder="Description" value={inputs.description} onChange={inputChange} className={styles.form__description}></textarea>

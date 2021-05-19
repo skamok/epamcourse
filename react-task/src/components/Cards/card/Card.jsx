@@ -3,7 +3,7 @@ import styles from './Card.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { useCallback } from 'react';
-import { deleteCard } from '../../redux/actions/cards.js';
+import { deleteCard } from '../../../redux/actions/cards.js';
 import { useStore } from 'react-redux';
 
 function Card({ card }) {

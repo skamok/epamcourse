@@ -1,0 +1,8 @@
+.field {
+  display: flex;
+  justify-content: space-between;
+  
+  &__label {
+    font-weight: bold;
+  }
+}
