@@ -1,104 +1,99 @@
 // Как поступить с инпутами если есть еще и текстареа
 // как прокинуть ref в map
-import { useState, useCallback, useRef} from 'react';
+import { useState, useCallback} from 'react';
 import styles from './CardsCreationForm.module.scss';
 import { v1 as uuidv1 } from 'uuid';
 import { useStore} from 'react-redux';
 import { addCard } from '../../../redux/actions/cards.js';
 import InputField from './InputField/InputField';
+import Description from './Description/Description';
+
+const initialState = {
+  title: {
+    name: 'Title',
+    id: 'title',
+    value: '',
+    placeholder: 'Input title',
+    type: 'text',
+    error: false
+  },
+  price: {
+    name: 'Price',
+    id: 'price',
+    value: 1,
+    placeholder: 'Input price',
+    type: 'number',
+    error: false
+  },
+  imageUrl: {
+    name: 'Link to image',
+    id: 'imageUrl',
+    value: '',
+    placeholder: 'Input link',
+    type: 'text',
+    error: false
+  },
+  description: {
+    name: '',
+    id: 'description',
+    value: '',
+    placeholder: 'Input some words',
+    type: '',
+    error: false
+  },
+}
 
 function CardsCreationForm() {
   const store = useStore();
 
-  const title = useRef(null);
-  const price = useRef(null);
-  const imageUrl = useRef(null);
-  const description = useRef(null);
-
-  const [inputs, setInputs] = useState({
-    title: '',
-    price: 1,
-    // description: '',
-    imageUrl: ''
-  });
-  const [inputWarning, setInputWarning] = useState(() => null);
+  const [fields, setFields] = useState(initialState);
 
   const checkInputComplete = useCallback(() => {
-    let error = null;
-    const refs = [title, price, imageUrl, description];
-    for (const input in inputs) {
-      if (!inputs[input]) {
-        const element = refs.find(ref => ref.current.name === input).current;
-        error = {
-          sourceInput: element,
-          style: {
-            top: element.getBoundingClientRect().top,
-            left: element.getBoundingClientRect().left,
-            width: element.getBoundingClientRect().width,
-            height: element.getBoundingClientRect().height
-          }
-        };
-        break;
-      }
+    const input = Object.entries(fields).find((input) => !input[1].value);
+    if (input) {
+      setFields((prev) => {
+        const node = {...prev[input[0]], error: true};
+        return {...prev, [input[0]]: node}
+      });
+      return true;
     }
-    return error;
-  }, [inputs]);
-
-  const errorMessageClick = () => {
-    inputWarning.sourceInput.focus();
-    setInputWarning(null);
-  }
+    return false;
+  }, [fields]);
 
   const btnAddClick = useCallback((event) => {
     event.preventDefault();
     const error = checkInputComplete();
-    setInputWarning(error);
     if (!error) {
       const card = {
         id: uuidv1(),
-        title: inputs.title,
-        description: inputs.description,
-        price: Number.parseFloat(inputs.price),
-        imageUrl: inputs.imageUrl
+        title: fields.title.value,
+        description: fields.description.value,
+        price: Number.parseFloat(fields.price.value),
+        imageUrl: fields.imageUrl.value
       }
       store.dispatch(addCard(card));
     }
-  }, [inputs, checkInputComplete, store]);
+  }, [checkInputComplete, fields, store]);
 
-  const inputChange = (event) => {
-    const {name, value} = event.currentTarget;
-    setInputs({...inputs, [name]: value});
-  }
-  console.log(inputs);
+  const inputChange = useCallback((event) => {
+    const {name, value: val} = event.currentTarget;
+    setFields((prev) => {
+      const node = {...prev[name], value: val, error: false};
+      return {...prev, [name]: node}
+    });
+  }, []);
+
   return (
     <form className={styles.form} onSubmit={btnAddClick}>
-      <div className={styles.form__left}>
-        {/* <div className={styles.form__input}>
-          <label htmlFor="title" className={styles.form__label}>Title</label>
-          <input type="text" placeholder="Title" ref={title} name="title" id="title" maxLength="32" value={inputs.title} onChange={inputChange} className={styles.form__title}/>
-        </div>
-        <div className={styles.form__input}>
-          <label htmlFor="price" className={styles.form__label}>Price</label>
-          <input type="number" placeholder="price" ref={price} name="price" id="price" value={inputs.price} onChange={inputChange} className={styles.form__price}/>
-        </div>
-        <div className={styles.form__input}>
-        <label htmlFor="imageUrl" className={styles.form__label}>Link to image</label>
-          <input type="text" placeholder="link to image" ref={imageUrl} name="imageUrl" id="imageUrl" value={inputs.imageUrl} onChange={inputChange} className={styles.form__link}/>
-        </div> */}
-        {
-          Object.entries(inputs).map(([field, value]) => {
-            return <InputField key={field} fieldName={field} fieldValue={value} inputChange={inputChange}/>
-          })
-        }
+      <div className={styles.form__left}>        
+        <InputField field={fields.title}  inputChange={inputChange}/>
+        <InputField field={fields.price}  inputChange={inputChange}/>
+        <InputField field={fields.imageUrl}  inputChange={inputChange}/>
       </div>
       <div className={styles.form__right}>
-        <textarea name="description" cols="40" rows="3" ref={description} placeholder="Description" value={inputs.description} onChange={inputChange} className={styles.form__description}></textarea>
+        <Description field={fields.description} inputChange={inputChange}/>
         <button className={styles.form__button}>Add new item</button>
       </div>
-      {
-        inputWarning &&
-        <span className={styles.form__error} style={inputWarning.style} onClick={errorMessageClick}>{`Please input ${inputWarning.sourceInput.name}`}</span>
-      }
     </form>
   )
 }
