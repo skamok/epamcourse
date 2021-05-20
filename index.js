@@ -1,29 +1,53 @@
-const baseURL = 'https://api.ratesapi.io/api/';
-const summaryURL = 'latest';
-const rateURL = 'latest?base=USD&symbols=GBP';
+const API_KEY = '65b96a5fe6bc3838312a';
+const baseURL = 'https://free.currconv.com/api/v7/';
+const summaryURL = `currencies?apiKey=${API_KEY}`;
+// Example
+// https://free.currconv.com/api/v7/currencies?apiKey=65b96a5fe6bc3838312a
+// https://free.currconv.com/api/v7/convert?q=USD_EUR&compact=ultra&apiKey=65b96a5fe6bc3838312a
+
+
 
 const baseElement = document.getElementById('base');
 const symbolElement = document.getElementById('symbol');
 const rateElement = document.getElementById('rate');
 
-const fetchSymbols = () => {
-  return fetch(baseURL + summaryURL)
+// const fetchSymbols = () => {
+//   return fetch(baseURL + summaryURL)
+//     .then((response) => {
+//       if (response.status === 200) {
+//         return response.json();
+//       }
+//       throw new Error(response.statusText);
+//     });
+// }
+
+// const fetchRate = (base, symbol) => {
+//   return fetch(`${baseURL}convert?q=${base}_${symbol}&compact=ultra&apiKey=${API_KEY}`)
+//   .then((response) => {
+//     if (response.status === 200) {
+//       return response.json();
+//     }
+//     throw new Error(response.statusText);
+//   });
+// }
+
+function fetchData(base, symbol) {
+  if (arguments.length) {
+    return fetch(`${baseURL}convert?q=${base}_${symbol}&compact=ultra&apiKey=${API_KEY}`)
     .then((response) => {
       if (response.status === 200) {
         return response.json();
       }
       throw new Error(response.statusText);
-    });
-}
-
-const fetchRate = (base, symbol) => {
-  return fetch(`${baseURL}latest?base=${base}&symbols=${symbol}`)
+  });
+  }
+  return fetch(baseURL + summaryURL)
   .then((response) => {
     if (response.status === 200) {
       return response.json();
     }
     throw new Error(response.statusText);
-  });
+  });  
 }
 
 const showRate = () => {
@@ -32,9 +56,9 @@ const showRate = () => {
   if (base === symbol) {
     rateElement.textContent = 1;
   } else {
-    fetchRate(base, symbol)
+    fetchData(base, symbol)
     .then((data) => {
-      const rate = Math.round(Object.values(data.rates)[0] * 100) / 100;
+      const rate = Math.round(Object.values(data)[0] * 1000) / 1000;
       rateElement.textContent = rate;
     })
     .catch((error) => rateElement.textContent = error);
@@ -53,11 +77,13 @@ const calculate = () => {
   showRate();
 }
 
-fetchSymbols()
+fetchData()
   .then((data) => {
-    const symbols = [data.base, ...Object.keys(data.rates)];
-    fillDropdawn(symbols, baseElement, 0);
-    fillDropdawn(symbols, symbolElement, 1);
+    const symbols = Object.keys(data.results);
+    const usdIndex = symbols.indexOf('USD');
+    const eurIndex = symbols.indexOf('EUR');
+    fillDropdawn(symbols, baseElement, usdIndex);
+    fillDropdawn(symbols, symbolElement, eurIndex);
     showRate();
     baseElement.addEventListener('change', calculate);
     symbolElement.addEventListener('change', calculate);
