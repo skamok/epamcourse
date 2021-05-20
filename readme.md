@@ -14,5 +14,6 @@ Deploys
 12. Deploy React Task 4 https://react-task4.netlify.app/
 13. Deploy Gold Task https://skamok.github.io/epamcourse/gold/index.html
 14. Deploy ES5 Task https://skamok.github.io/epamcourse/es5/index.html
-15. Deploy Multi Module Task https://skamok.github.io/epamcourse/multi_module/index.html
-16. Deploy React Task 4 https://react-task6.netlify.app/
+15. Deploy React Task 5 https://react-task-5.netlify.app/
+16. Deploy Multi Module Task https://skamok.github.io/epamcourse/multi_module/index.html
+17. Deploy React Task 6 https://react-task6.netlify.app/
