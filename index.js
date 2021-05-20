@@ -11,17 +11,8 @@ const baseElement = document.getElementById('base');
 const symbolElement = document.getElementById('symbol');
 const rateElement = document.getElementById('rate');
 
-function fetchData(base, symbol) {
-  if (arguments.length) {
-    return fetch(`${baseURL}convert?q=${base}_${symbol}&compact=ultra&apiKey=${API_KEY}`)
-    .then((response) => {
-      if (response.status === 200) {
-        return response.json();
-      }
-      throw new Error(response.statusText);
-  });
-  }
-  return fetch(baseURL + summaryURL)
+function fetchData(url) {
+  return fetch(url)
   .then((response) => {
     if (response.status === 200) {
       return response.json();
@@ -36,7 +27,8 @@ const showRate = () => {
   if (base === symbol) {
     rateElement.textContent = 1;
   } else {
-    fetchData(base, symbol)
+    const url = `${baseURL}convert?q=${base}_${symbol}&compact=ultra&apiKey=${API_KEY}`
+    fetchData(url)
     .then((data) => {
       const rate = Math.round(Object.values(data)[0] * 1000) / 1000;
       rateElement.textContent = rate;
@@ -57,7 +49,7 @@ const calculate = () => {
   showRate();
 }
 
-fetchData()
+fetchData(baseURL + summaryURL)
   .then((data) => {
     const symbols = Object.keys(data.results);
     const usdIndex = symbols.indexOf('USD');
