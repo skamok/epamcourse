@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import styles from './CardsContainer.module.scss';
-import Card from './Card.jsx';
-import CardsCreationForm from './CardsCreationForm.jsx';
+import Card from './card/Card.jsx';
+import CardsCreationForm from './CardsCreationForm/CardsCreationForm.jsx';
 import { apiCall } from '../../api/mockedApi';
 import { v1 as uuidv1 } from 'uuid';
 
 function CardsContainer() {
+  
   const [cards, setCards] = useState([]);
   const [message, setMessage] = useState('');
 
@@ -34,7 +35,7 @@ function CardsContainer() {
     },
     []
   )
-
+  
   return (
     <section className={styles.cardsCntr}>
       <CardsCreationForm cardAdd={cardAdd}/>
