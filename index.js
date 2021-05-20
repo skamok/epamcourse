@@ -11,26 +11,6 @@ const baseElement = document.getElementById('base');
 const symbolElement = document.getElementById('symbol');
 const rateElement = document.getElementById('rate');
 
-// const fetchSymbols = () => {
-//   return fetch(baseURL + summaryURL)
-//     .then((response) => {
-//       if (response.status === 200) {
-//         return response.json();
-//       }
-//       throw new Error(response.statusText);
-//     });
-// }
-
-// const fetchRate = (base, symbol) => {
-//   return fetch(`${baseURL}convert?q=${base}_${symbol}&compact=ultra&apiKey=${API_KEY}`)
-//   .then((response) => {
-//     if (response.status === 200) {
-//       return response.json();
-//     }
-//     throw new Error(response.statusText);
-//   });
-// }
-
 function fetchData(base, symbol) {
   if (arguments.length) {
     return fetch(`${baseURL}convert?q=${base}_${symbol}&compact=ultra&apiKey=${API_KEY}`)
