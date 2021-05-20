@@ -1,8 +1,8 @@
-// static for constants, dynamic for functions  
-import {baseURL, summaryURL} from './urls.js';
+// static for constants, dynamic for function  
+import {baseURL, summaryURL, API_KEY} from './urls.js';
 
-const fetchRatePath = './fetchRate.js';
-const fetchSymbolsPath = './fetchSymbols.js';
+const fetchDataPath = './fetchData.js';
+
 
 const baseElement = document.getElementById('base');
 const symbolElement = document.getElementById('symbol');
@@ -14,14 +14,16 @@ const showRate = () => {
   if (base === symbol) {
     rateElement.textContent = 1;
   } else {
-    import(fetchRatePath).then(({default: fetchRate}) => {
-      fetchRate(baseURL, base, symbol)
-      .then((data) => {
-        const rate = Math.round(Object.values(data.rates)[0] * 100) / 100;
-        rateElement.textContent = rate;
-      })
-      .catch((error) => rateElement.textContent = error);
-    });
+    const url = `${baseURL}convert?q=${base}_${symbol}&compact=ultra&apiKey=${API_KEY}`;
+    import(fetchDataPath)
+      .then(({default: fetchData}) => {
+        fetchData(url)
+        .then((data) => {
+          const rate = Math.round(Object.values(data)[0] * 1000) / 1000;
+          rateElement.textContent = rate;
+        })
+        .catch((error) => rateElement.textContent = error);
+      });
   }
 }
 
@@ -37,16 +39,19 @@ const calculate = () => {
   showRate();
 }
 
-import(fetchSymbolsPath).then(({default: fetchSymbols}) => {
-  fetchSymbols(baseURL, summaryURL)
-  .then((data) => {
-    const symbols = [data.base, ...Object.keys(data.rates)];
-    fillDropdawn(symbols, baseElement, 0);
-    fillDropdawn(symbols, symbolElement, 1);
-    showRate();
-    baseElement.addEventListener('change', calculate);
-    symbolElement.addEventListener('change', calculate);
-  })
-  .catch((error) => alert(error));
-});
+  import(fetchDataPath)
+  .then(({default: fetchData}) => {
+    fetchData(baseURL + summaryURL)
+      .then((data) => {
+        const symbols = Object.keys(data.results);
+        const usdIndex = symbols.indexOf('USD');
+        const eurIndex = symbols.indexOf('EUR');
+        fillDropdawn(symbols, baseElement, usdIndex);
+        fillDropdawn(symbols, symbolElement, eurIndex);
+        showRate();
+        baseElement.addEventListener('change', calculate);
+        symbolElement.addEventListener('change', calculate);
+      })
+      .catch((error) => alert(error));
+  });
   
