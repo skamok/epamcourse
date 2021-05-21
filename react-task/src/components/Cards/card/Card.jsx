@@ -4,15 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { useCallback } from 'react';
 import { deleteCard } from '../../../redux/actions/cards.js';
-import { useStore } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 function Card({ card }) {
 
-  const store = useStore();
+  const dispatch = useDispatch();
 
   const btnDelClick = useCallback(() => {
-    store.dispatch(deleteCard(card.id));
-  }, [store, card.id]);
+    dispatch(deleteCard(card.id));
+  }, [dispatch, card]);
 
   const btnDelete = <FontAwesomeIcon icon={faTimes} className={styles.card__btnDelete} onClick={btnDelClick}/>;
 

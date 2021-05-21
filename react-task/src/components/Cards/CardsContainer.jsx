@@ -12,9 +12,11 @@ function CardsContainer() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    setMessage('Loading...');
-    dispatch(loadCards());
-  }, [dispatch]);
+    if (!cards.length) {
+      setMessage('Loading...');
+      dispatch(loadCards());
+    }
+  }, [dispatch, cards]);
   
   return (
     <section className={styles.cardsCntr}>

@@ -2,11 +2,11 @@ import React from "react";
 import styles from "./LoginForm.module.scss";
 import { useState, useCallback, useEffect } from "react";
 import classNames from 'classnames';
-import {useStore, useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { loadUser } from '../../redux/actions/user.js';
 
 function LoginForm() {
-  const store = useStore();
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
   const [inputs, setInputs] = useState({
@@ -29,14 +29,14 @@ function LoginForm() {
   const btnLoginClick = useCallback((event) => {
     event.preventDefault();
     if (inputs.login && inputs.password) {
-      store.dispatch(loadUser(inputs.login, inputs.password));
+      dispatch(loadUser(inputs.login, inputs.password));
     } else {
       setErrors({
         login: inputs.login ? false : true,
         password: inputs.password ? false : true
       })
     }
-  }, [inputs, store]);
+  }, [inputs, dispatch]);
 
   useEffect(() => {
     if (user.error) {

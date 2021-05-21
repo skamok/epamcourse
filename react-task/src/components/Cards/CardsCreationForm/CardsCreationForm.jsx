@@ -3,7 +3,7 @@
 import { useState, useCallback} from 'react';
 import styles from './CardsCreationForm.module.scss';
 import { v1 as uuidv1 } from 'uuid';
-import { useStore} from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { addCard } from '../../../redux/actions/cards.js';
 import InputField from './InputField/InputField';
 import Description from './Description/Description';
@@ -44,7 +44,7 @@ const initialState = {
 }
 
 function CardsCreationForm() {
-  const store = useStore();
+  const dispatch = useDispatch();
 
   const [fields, setFields] = useState(initialState);
 
@@ -71,9 +71,9 @@ function CardsCreationForm() {
         price: Number.parseFloat(fields.price.value),
         imageUrl: fields.imageUrl.value
       }
-      store.dispatch(addCard(card));
+      dispatch(addCard(card));
     }
-  }, [checkInputComplete, fields, store]);
+  }, [checkInputComplete, fields, dispatch]);
 
   const inputChange = useCallback((event) => {
     const {name, value: val} = event.currentTarget;
