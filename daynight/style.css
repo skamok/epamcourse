@@ -1,0 +1,59 @@
+body,html {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+main {
+  display: flex;
+  height: 100vh;
+  background-color: bisque;
+}
+
+main.night {
+  background-color: rgb(22, 21, 21);
+}
+
+form {
+  margin: auto;
+  background-color: burlywood;
+  padding: 10px;
+}
+
+form.night {
+  background-color: teal;
+}
+
+label {
+  font-size: 20px;
+}
+
+label.night {
+  color: white;
+}
+
+input {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+input.night {
+  color: white;
+  background-color: grey;
+}
+
+button {
+  display: block;
+  width: 200px;
+  margin: 0 auto;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+button.night {
+  background-color: darkslateblue;
+  color: white;
+}

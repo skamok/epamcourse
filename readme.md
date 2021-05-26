@@ -19,3 +19,4 @@ Deploys
 17. Deploy React Task 5 https://react-task-5.netlify.app/
 18. Deploy Multi Module Task https://skamok.github.io/epamcourse/multi_module/index.html
 19. Deploy React Task 6 https://react-task6.netlify.app/
+20. Deploy Day & Night https://skamok.github.io/epamcourse/daynight/index.html
