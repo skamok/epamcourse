@@ -4,34 +4,54 @@ const nameElement = formElement.name;
 const familyElement = formElement.family;
 const btnSave = formElement.save;
 const btnTheme = formElement.theme;
+const APP_ID = 'daynight_'
 const USER_KEY = 'user';
+const THEME_KEY = 'theme_night';
 const defaultUser = {name: '', family: ''};
+let nightEnable = undefined;
 
-btnSave.addEventListener('click', saveUser);
-btnTheme.addEventListener('click', changeTheme);
+btnSave.addEventListener('click', btnSaveClick);
+btnTheme.addEventListener('click', btnThemeClick);
 
 fillUserInfo();
+loadTheme();
 
-function changeTheme () {
+function loadTheme () {
+  nightEnable = readLocalStorage(APP_ID + THEME_KEY, false);
+  changeTheme(nightEnable);
+}
+
+function btnThemeClick (event) {
   event.preventDefault();
+  changeTheme();
+}
+
+function changeTheme (night) {
   const elements = bodyElement.querySelectorAll('*');
-  elements.forEach((element) => element.classList.toggle('night'));
+  let isEnable = undefined;
+  if (arguments.length) {
+    isEnable = night;
+  } else {
+    isEnable = !readLocalStorage(APP_ID + THEME_KEY, false);
+    writeLocalStorage(APP_ID + THEME_KEY, isEnable)
+  }
+  if (isEnable) {
+    elements.forEach((element) => element.classList.add('night'));
+  } else {
+    elements.forEach((element) => element.classList.remove('night'));
+  }
 }
 
 function fillUserInfo () {
-  const {name, family} = readUser();
+  const {name, family} = readLocalStorage(APP_ID + USER_KEY, JSON.stringify(defaultUser));
   nameElement.value = name;
   familyElement.value = family;
 }
 
-function saveUser(event) {
+function btnSaveClick(event) {
   event.preventDefault();
   const user = {name: nameElement.value, family: familyElement.value};
-  writeLocalStorage(USER_KEY, user);
-}
-
-function readUser () {
- return readLocalStorage(USER_KEY, JSON.stringify(defaultUser));
+  writeLocalStorage(APP_ID + USER_KEY, user);
 }
 
 function writeLocalStorage(key, value) {
